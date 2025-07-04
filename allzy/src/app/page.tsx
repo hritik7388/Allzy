@@ -1,3 +1,4 @@
+// src/app/page.tsx 
 'use client'
 
 import { motion } from 'framer-motion'
@@ -18,10 +19,10 @@ const welcomeColors = [
 ]
 
 const bubbleColors = [
-  'bg-pink-300', 'bg-yellow-300', 'bg-green-300', 'bg-blue-300', 'bg-purple-300',
-  'bg-red-300', 'bg-orange-300', 'bg-indigo-300', 'bg-teal-300', 'bg-emerald-300',
-  'bg-cyan-300', 'bg-rose-300', 'bg-lime-300', 'bg-fuchsia-300', 'bg-sky-300',
-  'bg-violet-300', 'bg-amber-300'
+  'bg-pink-100', 'bg-yellow-100', 'bg-green-100', 'bg-blue-100', 'bg-purple-100',
+  'bg-red-100', 'bg-orange-100', 'bg-indigo-100', 'bg-teal-100', 'bg-emerald-100',
+  'bg-cyan-100', 'bg-rose-100', 'bg-lime-100', 'bg-fuchsia-100', 'bg-sky-100',
+  'bg-violet-100', 'bg-amber-100'
 ]
 const random = (min: number, max: number) => Math.random() * (max - min) + min
 
@@ -29,7 +30,7 @@ export default function Home() {
  const [bubbles, setBubbles] = useState<any[]>([])
 
   useEffect(() => {
-    const generated = Array.from({ length: 25 }, () => ({
+    const generated = Array.from({ length: 50 }, () => ({
       id: crypto.randomUUID(),
       top: random(5, 90),
       left: random(5, 90),
@@ -71,33 +72,36 @@ export default function Home() {
       ))}
 
       {/* WELCOME with animation */}
-      <div className="z-10 flex flex-wrap justify-center space-x-1 sm:space-x-3 text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tight text-center mt-6 sm:mt-10">
-        {welcomeLetters.map((letter, index) => (
-          <motion.span
-            key={index}
-            initial={{ rotate: 360, scale: 0 }}
-            animate={{ rotate: 0, scale: 1 }}
-            transition={{ delay: index * 0.2 , type: 'spring', stiffness: 150, damping: 10 }}
-            className={`border-2 ${welcomeColors[index]} border-current px-2 sm:px-3 py-1 sm:py-2 rounded-lg`}
-          >
-            {letter}
-          </motion.span>
-        ))}
-      </div>
+  {/* WELCOME with animation */}
+      <div className="relative z-10 bg-white"> {/* ✅ Fix applied here */}
+        <div className="flex flex-wrap justify-center space-x-1 sm:space-x-3 text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tight text-center mt-6 sm:mt-10">
+          {welcomeLetters.map((letter, index) => (
+            <motion.span
+              key={index}
+              initial={{ rotate: 360, scale: 0 }}
+              animate={{ rotate: 0, scale: 1 }}
+              transition={{ delay: index * 0.2, type: 'spring', stiffness: 150, damping: 10 }}
+              className={`border-2 ${welcomeColors[index]} border-current px-2 sm:px-3 py-1 sm:py-2 rounded-lg`}
+            >
+              {letter}
+            </motion.span>
+          ))}
+        </div>
 
-      {/* ALLZY */}
-      <div className="z-10 mt-10 flex flex-wrap justify-center space-x-2 sm:space-x-4 text-5xl sm:text-7xl md:text-9xl font-extrabold tracking-wider text-center">
-        {letters.map((letter, index) => (
-          <motion.span
-            key={index}
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: index * 0.3 + 2, type: 'spring', stiffness: 200 }}
-            className={`border-4 ${colors[index]} border-current px-2 sm:px-4 py-1 sm:py-2 rounded-md`}
-          >
-            {letter}
-          </motion.span>
-        ))}
+        {/* ALLZY */}
+        <div className="mt-10 flex flex-wrap justify-center space-x-2 sm:space-x-4 text-5xl sm:text-7xl md:text-9xl font-extrabold tracking-wider text-center">
+          {letters.map((letter, index) => (
+            <motion.span
+              key={index}
+              initial={{ y: -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: index * 0.3 + 2, type: 'spring', stiffness: 200 }}
+              className={`border-4 ${colors[index]} border-current px-2 sm:px-4 py-1 sm:py-2 rounded-md`}
+            >
+              {letter}
+            </motion.span>
+          ))}
+        </div>
       </div>
 
       {/* Description */}
