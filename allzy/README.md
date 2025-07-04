@@ -1,3 +1,6 @@
+# Allzy
+Everything, delivered easily and This app brings you everything you need in life.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
