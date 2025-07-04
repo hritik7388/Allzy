@@ -1,4 +1,6 @@
 'use client'
+import { useRouter } from 'next/navigation'
+
 
 import { useState } from 'react'
 import { FaGoogle, FaFacebookF } from 'react-icons/fa'
@@ -10,6 +12,7 @@ export default function SignupPage() {
     password: '',
     confirmPassword: '',
   })
+    const router = useRouter()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -22,7 +25,10 @@ export default function SignupPage() {
       return
     }
 
-    console.log('Signup data:', formData)
+   console.log('Signup data:', formData)
+
+    // ✅ Navigate to OTP page after signup
+    router.push('/verify-otp')
   }
 
   return (
