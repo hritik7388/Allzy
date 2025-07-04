@@ -10,7 +10,7 @@ export default function Header() {
     return (
         <header className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 shadow-md bg-[#f1ecca] border-b border-gray-300 relative">
             {/* App Name */}
-            <div className="text-2xl font-bold text-white-">Allzy</div>
+            <div className="text-2xl font-bold text-orange-500">Allzy</div>
 
             {/* Mobile menu button */}
             <button className="md:hidden text-gray-900" onClick={() => setMenuOpen(!menuOpen)}>
